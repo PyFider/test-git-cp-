@@ -6,7 +6,7 @@ main(int argc, const char **argv)
 {
 	FILE *srcf, *dstf;
 	const char *srcdir, *dstdir;
-	char buf[BUFLEN];
+	char *buf = malloc(BUFLEN);
 
 	if (argc < 3) return 1;
 	srcdir = *++argv;
@@ -16,6 +16,7 @@ main(int argc, const char **argv)
 
 	for (;fgets(buf, BUFLEN, srcf);)
 		fputs(buf, dstf);
+	putchar('\n');
 
 	fclose(srcf);
 	fclose(dstf);
